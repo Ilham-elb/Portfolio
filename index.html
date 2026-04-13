@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Ilham EL BOUAICHI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── DESIGN TOKENS ──────────────────────────────────── */
+    :root {
+      --accent:      #567bb3;   /* corporate navy blue */
+      --accent-light:#EBF0F8;
+      --ink:         #0F2040;   /* deep navy for headings */
+      --ink-mid:     #374151;   /* dark slate gray for body */
+      --ink-muted:   #6B7280;   /* medium gray */
+      --ink-faint:   #9CA3AF;   /* light gray */
+      --rule:        #CBD5E1;   /* cool blue-gray rule */
+      --bg:          #FFFFFF;
+
+      --font-body:   'DM Sans', sans-serif;
+      --font-serif:  'DM Serif Display', serif;
+
+      /* spacing scale */
+      --sp-xs: 4px;
+      --sp-sm: 8px;
+      --sp-md: 16px;
+      --sp-lg: 28px;
+      --sp-xl: 44px;
+    }
+
+    /* ─── BASE ───────────────────────────────────────────── */
+    html { background: #EEF2F7; } /* soft blue-gray page background */
+
+    body {
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--ink-mid);
+      background: var(--bg);
+      max-width: 794px;       /* ≈ A4 width */
+      margin: 32px auto;
+      padding: 64px 72px;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────── */
+    .cv-header {
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .cv-name {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .cv-title {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+      margin-bottom: 14px;
+    }
+
+    .cv-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 0;
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      text-decoration: none;
+    }
+
+    .cv-contact-item {
+      display: inline;
+    }
+
+    .cv-contact-sep {
+      display: inline-block;
+      width: 1px;
+      height: 12px;
+      background: var(--rule);
+      vertical-align: middle;
+      margin: 0 10px;
+    }
+
+    /* ─── SECTION STRUCTURE ───────────────────────────────── */
+    .cv-section {
+      margin-bottom: var(--sp-xl);
+    }
+
+    .cv-section:last-child { margin-bottom: 0; }
+
+    .cv-section-title {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ─── PROFIL ─────────────────────────────────────────── */
+    .cv-profile p {
+      font-size: 13.5px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    /* ─── COMPÉTENCES ─────────────────────────────────────── */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .skill-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .skill-label {
+      font-weight: 600;
+      color: var(--ink);
+      min-width: 180px;
+      flex-shrink: 0;
+      font-size: 12.5px;
+    }
+
+    .skill-label::after {
+      content: "";
+    }
+
+    .skill-sep {
+      color: var(--ink-faint);
+      margin: 0 8px;
+      font-weight: 300;
+    }
+
+    .skill-value {
+      color: var(--ink-mid);
+    }
+
+    /* ─── EXPERIENCE ──────────────────────────────────────── */
+    .exp-item {
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #ECECEC;
+      page-break-inside: avoid;
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .exp-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3px;
+    }
+
+    .exp-role {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .exp-date {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-mid);
+      margin-bottom: 8px;
+    }
+
+    .exp-project {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      letter-spacing: 0.1px;
+    }
+
+    .exp-context {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .exp-context strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--ink-mid);
+    }
+
+    .missions-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .exp-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px 0;
+    }
+
+    .exp-list li {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .exp-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .exp-stack {
+      font-size: 11.5px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+      padding-top: 6px;
+      border-top: 1px dashed #E0E0E0;
+    }
+
+    .exp-stack strong {
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.5px;
+      font-size: 10.5px;
+    }
+
+    .cv-header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+   .cv-header-text {
+     flex: 1;
+     min-width: 0;
+   }
+
+  .cv-photo-wrapper {
+    flex-shrink: 0;
+  }
+
+  .cv-photo {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+
+    /* ─── FORMATION ──────────────────────────────────────── */
+    .edu-item {
+      page-break-inside: avoid;
+    }
+
+    .edu-degree {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .edu-school-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .edu-school {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-mid);
+    }
+
+    .edu-date {
+      font-size: 11.5px;
+      color: var(--ink-muted);
+      letter-spacing: 0.3px;
+    }
+
+    /* ─── LANGUES ────────────────────────────────────────── */
+    .lang-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .lang-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .lang-name {
+      font-weight: 600;
+      color: var(--ink);
+      min-width: 60px;
+    }
+
+    .lang-level {
+      color: var(--ink-muted);
+    }
+
+    a:link {
+      color: var(--ink-muted);
+    }
+
+    /* ─── PRINT ──────────────────────────────────────────── */
+    @media print {
+      html { background: white; }
+      body {
+        margin: 0;
+        padding: 2cm 2.2cm;
+        max-width: none;
+        width: 100%;
+        font-size: 11.5px;
+      }
+      .cv-name { font-size: 34px; }
+      .exp-item { page-break-inside: avoid; }
+      .cv-section { page-break-inside: avoid; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════ HEADER ══════ -->
+  <header class="cv-header">
+  <div class="cv-header-content">
+    <div class="cv-header-text">
+      <h1 class="cv-name">Ilham EL BOUAICHI</h1>
+      <div class="cv-title">Développeuse Frontend Senior&nbsp;·&nbsp;6 ans d'expérience</div>
+      <div class="cv-contact">
+        <span class="cv-contact-item">+33 7 71 08 40 52</span>
+        <span class="cv-contact-sep"></span>
+        <span class="cv-contact-item">ilham.elbouaichi22@gmail.com</span>
+        <span class="cv-contact-sep"></span>
+        <a href="linkedin.com/in/ilham-el-bouaichi" class="cv-contact-item">linkedin.com/in/ilham-el-bouaichi</a>
+        <span class="cv-contact-sep"></span>
+        <span class="cv-contact-item">Lille, France</span>
+      </div>
+    </div>
+
+    <div class="cv-photo-wrapper">
+      <img src="./photo.jpeg" alt="Photo de Ilham EL BOUAICHI" class="cv-photo" />
+    </div>
+  </div>
+</header>
+
+  <!-- ══════════════════════════════════ PROFIL ══════ -->
+  <section class="cv-section cv-profile">
+    <h2 class="cv-section-title">Profil</h2>
+    <p>Développeuse Frontend Senior avec plus de 6 ans d'expérience en conception et développement d'applications web pour des acteurs majeurs (ADEO, Imprimerie Nationale, Total).
+      Spécialisée en Vue.js et Angular, avec une expertise en TypeScript, architecture micro-frontend, accessibilité RGAA et optimisation de performances.</p>
+  </section>
+
+  <!-- ══════════════════════════════════ COMPÉTENCES ══════ -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Compétences Techniques</h2>
+    <div class="skills-grid">
+
+      <div class="skill-row">
+        <span class="skill-label">Frontend</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">TypeScript, JavaScript, Vue 3, Angular, React, Svelte, Storybook, HTML5, CSS3, SCSS</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Langages de programmation</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">TypeScript, JavaScript, Java, C++</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Backend</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">Node.js, NestJS, Express, Spring Boot</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Architecture</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">Micro-frontend, Design Systems (Mozaic, DSFR)</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">DevOps CI/CD</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">GitLab CI, GitHub Actions, Jenkins, Docker, SonarQube, GCP</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Bases de données</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">MongoDB, PostgreSQL, Oracle</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Tests</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">Jest, Jasmine, Karma, Cypress, Playwright</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Méthodologie</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">Agile, Scrum, traduction des besoins métiers en solutions techniques</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Leadership</span>
+        <span class="skill-sep">—</span>
+        <span class="skill-value">Partage de bonnes pratiques, revue de code, proposition d'architectures techniques</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ FORMATION ══════ -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Formation</h2>
+    <div class="edu-item">
+      <div class="edu-degree">Ingénieur d'État en Informatique</div>
+      <div class="edu-school-line">
+        <span class="edu-school">École Nationale des Sciences Appliquées</span>
+        <span class="edu-date">2013 – 2019</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ EXPÉRIENCES ══════ -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Expériences Professionnelles</h2>
+
+    <!-- EXP 1 -->
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-role">Développeuse Frontend Senior</span>
+        <span class="exp-date">06/2024 – Présent</span>
+      </div>
+      <div class="exp-company">Liberté Films</div>
+      <span class="exp-project">Projet: CinéProd — Plateforme de gestion de production cinématographique</span>
+      <p class="exp-context"><strong>Contexte :</strong> Développement d'une plateforme web centralisée de gestion de production audiovisuelle destinée à améliorer le pilotage opérationnel et la collaboration entre équipes.</p>
+      <p class="missions-label">Missions &amp; Réalisations</p>
+      <ul class="exp-list">
+        <li>Conception et développement d'une interface utilisateur moderne et ergonomique pour la gestion de</li>
+        <li>Intégration de Keycloak pour une authentification centralisée (SSO) pour les collaborateurs internes et partenaires externes</li>
+        <li>Développement de fonctionnalités métier pour la gestion de projets et de contenus multimédias</li>
+        <li>Contribution à l'amélioration de la qualité applicative et de l'expérience utilisateur</li>
+      </ul>
+      <div class="exp-stack"><strong>Stack Technique:</strong> Vue 3, TypeScript, Tailwind CSS, NestJS, MongoDB, GitLab CI, Git</div>
+    </div>
+
+    <!-- EXP 2 -->
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-role">Référente Technique Frontend</span>
+        <span class="exp-date">11/2022 – 04/2024</span>
+      </div>
+      <div class="exp-company">ADEO</div>
+      <span class="exp-project">Projet: WIMO (Where Is My Order) — Outil de suivi de commandes fournisseurs</span>
+      <p class="exp-context"><strong>Contexte :</strong> Évolution d'une application de suivi de commandes fournisseurs pour les Business Units du groupe,
+        avec un système d'alertes couvrant le périmètre PASQ (Produits, Achats, Supply Chain, Qualité), gérant plusieurs modes de distribution (Trading et Continental) et déployé sur plusieurs portails via la solution micro-frontend KOBI.</p>
+      <p class="missions-label">Missions &amp; Réalisations</p>
+      <ul class="exp-list">
+        <li>Rôle de Référente Technique Frontend : garant de la qualité technique et de l'architecture front</li>
+        <li>Intégration et mise en conformité avec le Design System Mozaic (ADEO)</li>
+        <li>Amélioration de l'expérience utilisateur (UX/UI) et de l’accessibilité</li>
+        <li>Optimisation des performances applicatives</li>
+        <li>Collaboration étroite avec l'équipe produit pour faciliter l'implémentation des nouvelles fonctionnalités</li>
+        <li>Développement et livraison de nouvelles fonctionnalités sur plusieurs portail multi-BU</li>
+      </ul>
+      <div class="exp-stack"><strong>Stack Technique:</strong> Vue 3, TypeScript, Mozaic Design System, Architecture Micro-frontend KOBI, Storybook, GitHub Actions, Git, GCP, Jest, Cypress</div>
+    </div>
+
+    <!-- EXP 3 -->
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-role">Développeuse Frontend</span>
+        <span class="exp-date">07/2021 – 06/2022</span>
+      </div>
+      <div class="exp-company">Imprimerie Nationale</div>
+      <span class="exp-project">Projet: Crit'Air — Site officiel des certificats qualité de l'air</span>
+      <p class="exp-context"><strong>Contexte :</strong> Refonte et amélioration du site gouvernemental Crit'Air dédié à la commande de vignettes antipollution pour les particuliers et les entreprises.
+        L'enjeu principal était d'améliorer l'ergonomie, l'expérience utilisateur et la conformité aux normes d'accessibilité RGAA.</p>
+      <p class="missions-label">Missions &amp; Réalisations</p>
+      <ul class="exp-list">
+        <li>Refonte du parcours utilisateur sur le tunnel de commande</li>
+        <li>Intégration complète du DSFR (Design System de l'État) pour le site Crit'Air, avec respect des normes RGAA et des guidelines gouvernementales</li>
+        <li>Proposition de solutions techniques pour l'amélioration de la qualité du code</li>
+        <li>Participation aux démonstrations et aux échanges avec les parties prenantes métier</li>
+        <li>Rédaction et exécution des tests unitaires et d'intégration couvrant l'intégralité de l'application</li>
+      </ul>
+      <div class="exp-stack"><strong>Stack Technique:</strong> Angular, RxJS, TypeScript, DSFR, Jasmine, Karma, GitLab CI, Docker</div>
+    </div>
+
+    <!-- EXP 4 -->
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-role">Développeuse Frontend</span>
+        <span class="exp-date">03/2021 – 07/2021</span>
+      </div>
+      <div class="exp-company">CA Solutions</div>
+      <span class="exp-project">Projet: E-catalogue — Outil d'administration de catalogues en ligne</span>
+      <p class="exp-context"><strong>Contexte :</strong> Industrialisation d'un outil de gestion de catalogues en ligne pour le rendre configurable et réutilisable pour plusieurs clients grands comptes (Carrefour, Intermarché, Brico Dépôt).</p>
+      <p class="missions-label">Missions &amp; Réalisations</p>
+      <ul class="exp-list">
+        <li>Création d'une bibliothèque Angular générique et réutilisable multi-client, réduisant les coûts de développement</li>
+        <li>Standardisation des développements pour améliorer la maintenabilité et la réutilisation</li>
+        <li>Présentation des fonctionnalités au client final</li>
+        <li>Rédaction et exécution des tests unitaires et d'intégration avec couverture des composants génériques</li>
+        <li>Coordination avec les équipes backend pour l'intégration d'APIs sécurisées et la gestion des flux de données</li>
+      </ul>
+      <div class="exp-stack"><strong>Stack Technique:</strong> Angular, Java, Spring Boot, Docker, GitLab CI, Git</div>
+    </div>
+
+    <!-- EXP 5 -->
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-role">Développeuse FullStack</span>
+        <span class="exp-date">01/2020 – 02/2021</span>
+      </div>
+      <div class="exp-company">Association SOLIHA</div>
+      <span class="exp-project">Projet: Mon logement et moi — Application 3D</span>
+      <p class="exp-context"><strong>Contexte :</strong> Développement d'une application ludo-éducative 3D conçue pour sensibiliser le public aux problématiques du logement, sous la forme d'un jeu de plateau numérique, accompagnée d'une interface d'administration permettant de gérer les contenus, les questions et la préparation des sessions de jeu.</p>
+      <p class="missions-label">Missions &amp; Réalisations</p>
+      <ul class="exp-list">
+        <li>Réalisation de 2 POCs (Unity vs BabylonJS) pour sélectionner le moteur de jeu adapté</li>
+        <li>Proposition et validation de la stack technique</li>
+        <li>Développement complet d'un jeu ludo-éducatif avec interface d'administration</li>
+        <li>Intégration d'éléments 3D avec BabylonJS</li>
+        <li>Optimisation des performances applicatives</li>
+        <li>Animation des démonstrations clients, revues de code et documentation technique</li>
+      </ul>
+      <div class="exp-stack"><strong>Stack Technique:</strong> Node.js, Express, PostgreSQL, TypeORM, VueJS, BabylonJS, JWT, Jest, GitLab CI, Docker</div>
+    </div>
+
+    <!-- EXP 6 -->
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-role">Développeuse Frontend</span>
+        <span class="exp-date">09/2019 – 01/2020</span>
+      </div>
+      <div class="exp-company">Total</div>
+      <span class="exp-project">Projet: MyAS24 — Système d'information du réseau AS24</span>
+      <p class="exp-context"><strong>Contexte :</strong> Intervention sur la modernisation du système d'information du réseau AS24, spécialisé dans la distribution de carburant et les services aux professionnels du transport.</p>
+      <p class="missions-label">Missions &amp; Réalisations</p>
+      <ul class="exp-list">
+        <li>Développement d'interfaces graphiques modernes et accessibles</li>
+        <li>Création de composants Angular réutilisables</li>
+        <li>Mise en place de l'internationalisation (i18n) pour plusieurs langues</li>
+        <li>Rédaction et exécution des tests unitaires et d'intégration avec Karma</li>
+        <li>Participation aux revues de code</li>
+      </ul>
+      <div class="exp-stack"><strong>Stack Technique:</strong> Angular, Angular Material, Jasmine, Karma, Jenkins, SonarQube, Git</div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════ LANGUES ══════ -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Langues</h2>
+    <div class="lang-list">
+
+      <div class="lang-item">
+        <span class="lang-name">Français</span>
+        <span class="lang-level">Courant</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">Anglais</span>
+        <span class="lang-level">Courant</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">Arabe</span>
+        <span class="lang-level">Maternelle</span>
+      </div>
+    </div>
+  </section>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
